@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Plane : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Plane : MonoBehaviour
     public float speed = 1;
     public AnimationCurve landing;
     float landingTimer;
+    Vector2 pos;
 
     private void Start()
     {
@@ -22,7 +24,10 @@ public class Plane : MonoBehaviour
         lineRenderer.SetPosition(0, transform.position);
 
         rigidbody = GetComponent<Rigidbody2D>();
-        
+        pos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
+        transform.position = pos;
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+
     }
 
     void FixedUpdate()

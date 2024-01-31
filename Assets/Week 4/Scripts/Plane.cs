@@ -104,5 +104,14 @@ public class Plane : MonoBehaviour
        
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        spriteRenderer.color = Color.red;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        spriteRenderer.color = Color.white;
+    }
 
 }

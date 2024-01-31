@@ -20,6 +20,7 @@ public class Plane : MonoBehaviour
     int rand;
     public List<Sprite> spriteList;
     float tooClose = 0.5f;
+    public bool stopFly = false;
 
     private void Start()
     {
@@ -54,9 +55,9 @@ public class Plane : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.Space)) 
+        if(Input.GetKey(KeyCode.Space) || stopFly == true) 
         {
-            landingTimer += 0.1f * Time.deltaTime;
+            landingTimer += 0.01f * Time.deltaTime;
             float interpolation = landing.Evaluate(landingTimer);
             if(transform.localScale.z < 0.1f)
             {

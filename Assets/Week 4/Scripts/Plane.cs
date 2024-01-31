@@ -19,6 +19,7 @@ public class Plane : MonoBehaviour
     SpriteRenderer spriteRenderer;
     int rand;
     public List<Sprite> spriteList;
+    float tooClose = 0.5f;
 
     private void Start()
     {
@@ -107,6 +108,15 @@ public class Plane : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         spriteRenderer.color = Color.red;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        float dist = Vector3.Distance(transform.position, collision.transform.position);
+        if (dist < tooClose)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

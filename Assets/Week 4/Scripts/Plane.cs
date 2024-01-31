@@ -16,6 +16,9 @@ public class Plane : MonoBehaviour
     public AnimationCurve landing;
     float landingTimer;
     Vector2 pos;
+    SpriteRenderer spriteRenderer;
+    int rand;
+    public List<Sprite> spriteList;
 
     private void Start()
     {
@@ -27,6 +30,12 @@ public class Plane : MonoBehaviour
         pos = new Vector2(Random.Range(-5, 5), Random.Range(-5, 5));
         transform.position = pos;
         transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+        speed = Random.Range(1, 3);
+        int rand = Random.Range(1, 4);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = spriteList[rand - 1];
+        
+        
 
     }
 

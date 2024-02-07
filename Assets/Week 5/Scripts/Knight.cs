@@ -10,15 +10,23 @@ public class Knight : MonoBehaviour
     Vector2 movement;
     public float speed;
     Animator animator;
+    bool clickSelf = false;
+    public float health;
+    public float maxHealth = 5;
+    float damage = 1;
+    bool isDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        health = maxHealth;
     }
 
     private void FixedUpdate()
     {
+        if (isDead) return;
         movement = destination - (Vector2)transform.position;
         if(movement.magnitude < 0.1) 
         {
@@ -33,10 +41,43 @@ public class Knight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if (isDead) return;
+        if(Input.GetMouseButtonDown(0) && !clickSelf)
         {
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         animator.SetFloat("Movement", movement.magnitude);
+    }
+
+    private void OnMouseDown()
+    {
+        if (isDead) return;
+        clickSelf = true;
+        TakeDamage();
+
+
+    }
+
+    private void OnMouseUp()
+    {
+        clickSelf = false;
+    }
+
+    private void TakeDamage()
+    {
+        health -= damage;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        if (health <= 0)
+        {
+            isDead = true;
+            animator.SetTrigger("Death");
+        }
+        else
+        {
+            isDead = false;
+            animator.SetTrigger("Take Damage");
+        }
+       
+
     }
 }

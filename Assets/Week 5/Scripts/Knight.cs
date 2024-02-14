@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -22,6 +23,7 @@ public class Knight : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         health = maxHealth;
+        SendMessage("FullHealth");
     }
 
     private void FixedUpdate()
@@ -86,7 +88,18 @@ public class Knight : MonoBehaviour
             isDead = false;
             animator.SetTrigger("Take Damage");
         }
-       
 
     }
+        
+        
+        
+        
+        
+    public void FullHealth()
+    {
+        health = maxHealth;
+    }
+       
+
+    
 }

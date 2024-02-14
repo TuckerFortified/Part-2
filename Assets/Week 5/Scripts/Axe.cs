@@ -34,7 +34,7 @@ public class Axe : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.gameObject.SendMessage("TakeDamage", 1);
+        collision.gameObject.SendMessage("TakeDamage", 1, SendMessageOptions.DontRequireReceiver);
         Destroy(game);
     }
 }

@@ -15,8 +15,12 @@ public class ButtonsScript : MonoBehaviour
 
     public void sixteenXNine()
     {
-         Screen.SetResolution(1600, 900, false);
+        Screen.SetResolution(1600, 900, false);
     } 
         
+    public void HD()
+    {
+        Screen.SetResolution(1920, 1080, false);
+    }
 
 }

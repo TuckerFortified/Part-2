@@ -73,7 +73,7 @@ public class Goal : MonoBehaviour
             SendMessage("Increment", SendMessageOptions.DontRequireReceiver);
         }
 
-
+        
     }
 
     

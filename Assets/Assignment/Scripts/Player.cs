@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     Animator animator;
     public float speed;
     float lastY = 0;
-    int Health;
+    public float Health;
     int MaxHealth = 10;
     public AnimationCurve animationcurve;
     public float lerpTimer;
@@ -37,7 +37,9 @@ public class Player : MonoBehaviour
         {
             //The destination is set to the current mouse posisiton
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
         }
+        
 
        
     }
@@ -60,12 +62,16 @@ public class Player : MonoBehaviour
 
     //This function controls how much health the player takes/receives. 
     //It also checks if the health is below 0, and if so, loads the death screen.
-    public void ChangeHealthValue(int i)
+    public void ChangeHealthValue(float i)
     {
         Health = Health + i;
         if (Health <= 0)
         {
             //SceneManager.LoadScene();
+        }
+        if (Health >= MaxHealth)
+        {
+            Health = MaxHealth;
         }
     }
 
@@ -75,5 +81,6 @@ public class Player : MonoBehaviour
     {
         SendMessage("ChangeHealthValue", -1);
     }
+
 
 }

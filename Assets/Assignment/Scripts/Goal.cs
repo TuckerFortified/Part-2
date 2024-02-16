@@ -63,6 +63,12 @@ public class Goal : MonoBehaviour
         //This line resets the animation curve, reseting the animation for moving.
         lerpTimer = 0;
 
+        //This sends a message to the player to add 1 health
+        collision.SendMessage("ChangeHealthValue", 1);
+
+        //This sends a message to the score, telling it to add 1 point
+        SendMessage("Increment", SendMessageOptions.DontRequireReceiver);
+
 
     }
 

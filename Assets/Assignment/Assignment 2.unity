@@ -648,6 +648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1254472930}
+  - component: {fileID: 1254472931}
   m_Layer: 0
   m_Name: Projectile Spawner
   m_TagString: Untagged
@@ -670,6 +671,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1254472931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254472929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7049dba3d6659ac4c9cf851cb15b4c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 4058870594419735755, guid: 178987ce9dcfe7946aab451a28e0ba28, type: 3}
 --- !u!1 &1350286562
 GameObject:
   m_ObjectHideFlags: 0

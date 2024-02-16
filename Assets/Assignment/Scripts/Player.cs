@@ -75,12 +75,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    //This function checks for collision with objects
-    //On collision, it sends a message that triggers the player to take 1 damage
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        SendMessage("ChangeHealthValue", -1);
-    }
-
 
 }

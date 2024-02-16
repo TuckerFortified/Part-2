@@ -7,18 +7,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rigidbody;
-    float destination;
+    Vector2 destination;
+    Vector2 movement;
+    Animator animator;
+    public float speed;
 
 
-    // Start is called before the first frame update
+
+    
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
-        
+        //Getting mouse position and setting it to the destination.
+        if (Input.GetMouseButtonDown(0))
+        {
+            destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
     }
 }

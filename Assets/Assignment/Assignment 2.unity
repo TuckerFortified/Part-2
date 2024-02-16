@@ -492,6 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  Health: 0
   animationcurve:
     serializedVersion: 2
     m_Curve:

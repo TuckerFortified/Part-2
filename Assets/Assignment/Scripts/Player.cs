@@ -24,10 +24,18 @@ public class Player : MonoBehaviour
   
     void Update()
     {
-        //Getting mouse position and setting it to the destination.
+        //This script activates when the mouse is clicked
         if (Input.GetMouseButtonDown(0))
         {
+            //The destination is set to the current mouse posisiton
             destination = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        //This code moves the player towards the destination
+        movement = destination - (Vector2)transform.position;
+        rigidbody.MovePosition(rigidbody.position + movement.normalized * speed * Time.deltaTime);
     }
 }

@@ -17,6 +17,10 @@ public class Goal : MonoBehaviour
     public float lerpTimer;
     public float interpolation;
     bool isMoving;
+    Vector2 oppositeDirection;
+    Vector2 lastPosition;
+    Vector2 currentPosition;
+    Rigidbody2D rigidbody;
 
 
     
@@ -24,6 +28,10 @@ public class Goal : MonoBehaviour
     {
         //This code makes the object start at a random position
         transform.position = new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), 0);
+
+        lastPosition = transform.position;
+
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,29 +39,31 @@ public class Goal : MonoBehaviour
         //This code resets the animation curve and changes the move coordinates
         startPos = transform;
         int count = Random.Range(1, 5);
-        if (count == 1)
+        if (count == 1 && endPos != endPos1)
         {
             endPos = endPos1;
         }
-        else if (count == 2)
+        else if (count == 2 && endPos != endPos2)
         {
             endPos = endPos2;
         }
-        else if (count == 3)
+        else if (count == 3 && endPos != endPos3)
         {
             endPos = endPos3;
         }
-        else if (count == 4)
+        else if (count == 4 && endPos != endPos4)
         {
             endPos = endPos4;
         }
-        else if (count == 5)
+        else 
         {
             endPos = endPos5;
         }
 
         //This line resets the animation curve, reseting the animation for moving.
         lerpTimer = 0;
+
+
     }
 
     
@@ -63,5 +73,14 @@ public class Goal : MonoBehaviour
         interpolation = animationCurve.Evaluate(lerpTimer);
         transform.position = Vector3.Lerp(startPos.position, endPos.position, interpolation);
         lerpTimer = lerpTimer + Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        //This code will change the rotation of the Goal, so that it is facing its previos position
+        currentPosition = transform.position;
+        Vector2 oppositeDirection = lastPosition - currentPosition;
+        float angle = Mathf.Atan2(oppositeDirection.x, oppositeDirection.y) * Mathf.Rad2Deg;
+        rigidbody.rotation = -angle; 
     }
 }

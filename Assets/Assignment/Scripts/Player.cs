@@ -16,6 +16,9 @@ public class Player : MonoBehaviour
     float lastY = 0;
     int Health;
     int MaxHealth = 10;
+    public AnimationCurve animationcurve;
+    public float lerpTimer;
+    public float interpolation;
 
 
     
@@ -48,6 +51,7 @@ public class Player : MonoBehaviour
             movement = Vector2.zero;
         }
         rigidbody.MovePosition(rigidbody.position + movement.normalized * speed * Time.deltaTime);
+
         //This code changes compares the previous and current values of X and Y, then changes the animation values based on it
         animator.SetFloat("Vertical", transform.position.y - lastY);
         animator.SetFloat("Speed", movement.magnitude);
@@ -71,9 +75,5 @@ public class Player : MonoBehaviour
     {
         SendMessage("ChangeHealthValue", -1);
     }
- 
-        
-
-
 
 }

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Player : MonoBehaviour
     Animator animator;
     public float speed;
     float lastY = 0;
+    int Health;
+    int MaxHealth = 10;
 
 
     
@@ -20,6 +23,7 @@ public class Player : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        Health = MaxHealth;
     }
 
   
@@ -49,4 +53,17 @@ public class Player : MonoBehaviour
         animator.SetFloat("Speed", movement.magnitude);
         lastY = transform.position.y;
     }
+
+    //This function controls how much health the player takes/receives. 
+    //It also checks if the health is below 0, and if so, loads the death screen.
+    public void ChangeHealthValue(int i)
+    {
+        Health = Health - i;
+        if (Health <= 0)
+        {
+            //SceneManager.LoadScene();
+        }
+    }
+
+
 }

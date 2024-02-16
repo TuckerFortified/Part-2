@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         Health = Health + i;
         if (Health <= 0)
         {
-            //SceneManager.LoadScene();
+            SceneManager.LoadScene(4);
         }
         if (Health >= MaxHealth)
         {

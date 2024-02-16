@@ -58,12 +58,22 @@ public class Player : MonoBehaviour
     //It also checks if the health is below 0, and if so, loads the death screen.
     public void ChangeHealthValue(int i)
     {
-        Health = Health - i;
+        Health = Health + i;
         if (Health <= 0)
         {
             //SceneManager.LoadScene();
         }
     }
+
+    //This function checks for collision with objects
+    //On collision, it sends a message that triggers the player to take 1 damage
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        SendMessage("ChangeHealthValue", -1);
+    }
+ 
+        
+
 
 
 }

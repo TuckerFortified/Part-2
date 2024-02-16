@@ -10,8 +10,11 @@ public class Health_Bar : MonoBehaviour
 
     private void Start()
     {
+        //This code makes it so the health starts at 10
         healthBar.value = 10;
     }
+
+    //This code changes the health bar value depending on who touches the player
     public void ChangeHealthValue(float i)
     {
         healthBar.value = healthBar.value + i;

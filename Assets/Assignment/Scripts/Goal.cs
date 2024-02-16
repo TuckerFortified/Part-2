@@ -70,7 +70,7 @@ public class Goal : MonoBehaviour
             collision.SendMessage("ChangeHealthValue", 1);
 
             //This sends a message to the score, telling it to add 1 point
-            SendMessage("Increment", SendMessageOptions.DontRequireReceiver);
+            collision.SendMessage("Increment", SendMessageOptions.DontRequireReceiver);
         }
 
         

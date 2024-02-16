@@ -36,38 +36,42 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //This code resets the animation curve and changes the move coordinates
-        startPos = transform;
-        int count = Random.Range(1, 5);
-        if (count == 1 && endPos != endPos1)
+        //Chacking if the object that is colliding is the player (using a tag)
+        if (collision.CompareTag("Player"))
         {
-            endPos = endPos1;
-        }
-        else if (count == 2 && endPos != endPos2)
-        {
-            endPos = endPos2;
-        }
-        else if (count == 3 && endPos != endPos3)
-        {
-            endPos = endPos3;
-        }
-        else if (count == 4 && endPos != endPos4)
-        {
-            endPos = endPos4;
-        }
-        else 
-        {
-            endPos = endPos5;
-        }
+            //This code resets the animation curve and changes the move coordinates
+            startPos = transform;
+            int count = Random.Range(1, 5);
+            if (count == 1 && endPos != endPos1)
+            {
+                endPos = endPos1;
+            }
+            else if (count == 2 && endPos != endPos2)
+            {
+                endPos = endPos2;
+            }
+            else if (count == 3 && endPos != endPos3)
+            {
+                endPos = endPos3;
+            }
+            else if (count == 4 && endPos != endPos4)
+            {
+                endPos = endPos4;
+            }
+            else
+            {
+                endPos = endPos5;
+            }
 
-        //This line resets the animation curve, reseting the animation for moving.
-        lerpTimer = 0;
+            //This line resets the animation curve, reseting the animation for moving.
+            lerpTimer = 0;
 
-        //This sends a message to the player to add 1 health
-        collision.SendMessage("ChangeHealthValue", 1);
+            //This sends a message to the player to add 1 health
+            collision.SendMessage("ChangeHealthValue", 1);
 
-        //This sends a message to the score, telling it to add 1 point
-        SendMessage("Increment", SendMessageOptions.DontRequireReceiver);
+            //This sends a message to the score, telling it to add 1 point
+            SendMessage("Increment", SendMessageOptions.DontRequireReceiver);
+        }
 
 
     }

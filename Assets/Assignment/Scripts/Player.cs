@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public AnimationCurve animationcurve;
     public float lerpTimer;
     public float interpolation;
+    bool isPlayer = true;
 
 
     

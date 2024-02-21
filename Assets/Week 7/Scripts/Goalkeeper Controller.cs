@@ -10,6 +10,7 @@ public class GoalkeeperController : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 dir;
     Vector2 CenterLine;
+    Vector2 Destination;
     void Start()
     {
        CenterLine = transform.position;
@@ -23,12 +24,14 @@ public class GoalkeeperController : MonoBehaviour
         dir = (Vector2)Controller.CurrentSelection.transform.position - CenterLine;
         if (dir.magnitude > GoalDistance * 2)
         {
-            rb.position = CenterLine + dir.normalized * GoalDistance;
+            Destination = CenterLine + dir.normalized * GoalDistance;
 
         }
         else
         {
-            rb.position = CenterLine + dir / 2;
+            Destination = CenterLine + dir / 2;
+            
         }
+        rb.position = Vector2.MoveTowards((Vector2)rb.position, Destination, 0.05f);
     }
 }

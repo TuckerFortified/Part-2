@@ -6,17 +6,29 @@ using UnityEngine;
 
 public class GoalkeeperController : MonoBehaviour
 {
-    float GaolDistance = 2;
-    public Rigidbody rb;
-    // Start is called before the first frame update
+    float GoalDistance = 2;
+    public Rigidbody2D rb;
+    Vector2 dir;
+    Vector2 CenterLine;
     void Start()
     {
-       
+       CenterLine = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+ 
+    void FixedUpdate()
     {
-        //rb.transform.position = (Vector2)CurrentSelection.transform.position;
+        
+
+        dir = (Vector2)Controller.CurrentSelection.transform.position - CenterLine;
+        if (dir.magnitude > GoalDistance * 2)
+        {
+            rb.position = CenterLine + dir.normalized * GoalDistance;
+
+        }
+        else
+        {
+            rb.position = CenterLine + dir / 2;
+        }
     }
 }

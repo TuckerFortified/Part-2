@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Controller : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Controller : MonoBehaviour
     public Slider ChargeSlider;
     public float maxCharge;
     Vector2 direction;
+    public static float Score;
+    public TextMeshProUGUI textMeshProUGUI;
     public static FootballPlayer CurrentSelection { get; private set; }
     public static void SetCurrentSelection(FootballPlayer player)
     {
@@ -28,6 +31,8 @@ public class Controller : MonoBehaviour
             CurrentSelection.Move(direction);
             direction = Vector2.zero;
         }
+
+        textMeshProUGUI.text = "Score: " + Score;
     }
     private void Update()
     {
